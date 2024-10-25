@@ -14,7 +14,7 @@ using namespace std;
 void NearestNeighbour::vectorizer(const string& fPath) {
     ifstream file(fPath);
     if (!file.is_open()) {
-        cerr << "Error opening file!" << endl;
+        cout << "Error opening file!" << endl;
         return;
     }
 
@@ -40,7 +40,7 @@ void NearestNeighbour::vectorizer(const string& fPath) {
             if (wordIndex.find(word) == wordIndex.end()) {
                 // New word, assign an index and expand all word vectors
                 wordIndex[word] = index++;
-                for (auto& vec : bagOfWords) {
+                for (auto &vec : bagOfWords) {
                     vec.push_back(0);  // Add new element for existing vectors
                 }
                 wordVector.push_back(1);
@@ -110,7 +110,7 @@ int main() {
     nn.vectorizer("mov.csv");
 
     // Recommend movies similar to a given title
-    nn.recommendMovies("The Truman Show");
+    nn.recommendMovies("Fight Club");
 
     return 0;
 }
